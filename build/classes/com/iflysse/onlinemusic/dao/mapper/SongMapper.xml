@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+ 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--等价于dao接口的实现：namespace为该xml实现的接口 -->
+<mapper namespace="com.iflysse.onlinemusic.dao.SongDao">
+
+	<resultMap type="Song" id="SongResultMap">
+		<id property="id" column="id" />
+		<result property="song" column="song" />
+		<result property="special" column="special" />
+		<result property="singer" column="singer" />
+		<result property="upLoadDate" column="upLoadDate" />
+		<result property="path" column="path" />
+		<result property="userId" column="userId" />
+		<result property="collectId" column="collectId" />
+	</resultMap>
+
+	<select id="getSongList" resultMap="SongResultMap">
+		<![CDATA[ 
+            select s.*,u.nname from Song s inner join user u on s.userid=u.id limit #{pageIndex},#{pageSize}
+        ]]>
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		<![CDATA[ 
+          select Count(*) from Song
+        ]]>
+	</select>
+
+	<select id="getMySongList" resultMap="SongResultMap">
+		<![CDATA[ 
+        select * from Song where userid=#{userId} limit #{pageIndex},#{pageSize}
+        ]]>
+	</select>
+	
+	<select id="getMyTotalCount" parameterType="int" resultType="int">
+		<![CDATA[ 
+         select count(*) from Song where userid=#{userId}
+        ]]>
+	</select>
+	
+	<select id="getSong" parameterType="int" resultType="Song">
+		<![CDATA[ 
+        select * from song where id=#{id}
+        ]]>
+	</select>
+	
+	<update id="update" parameterType="Song">
+		<![CDATA[ 
+        update song set song =#{song} ,special =#{special} ,singer =#{singer},uploaddate =#{upLoadDate} ,path =#{path}  ,userid =#{userId} where id=#{id}
+        ]]>
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		<![CDATA[ 
+			delete from song where id=#{id}
+        ]]>
+	</delete>
+	
+	<insert id="add" parameterType="Song">
+		<![CDATA[ 
+			INSERT INTO song(song,special,singer ,uploaddate,path,userid)values(#{song},#{special},#{singer},#{upLoadDate},#{path},#{userId})
+        ]]>
+	</insert>
+
+</mapper>

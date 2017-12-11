@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+.center{
+	width: 800px;
+	margin: 0px auto;
+}
+
+div{
+	margin-top: 30px;
+	font-size: 12pt;
+}
+
+#btnRegister{
+	margin-left:80px;
+	width: 80px;
+}

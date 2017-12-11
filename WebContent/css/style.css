@@ -1,0 +1,130 @@
+@CHARSET "UTF-8";
+
+* {
+	font-size: 11pt;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	text-align: center;
+	s
+}
+
+table tr td {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#main {
+	margin: 0px auto;
+	width: 1200px;
+}
+
+#main #head {
+	margin-left: 40px;
+	margin-right: 40px;
+}
+
+#main #head div,a {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#main #middle {
+	margin-top: 50px;
+	margin-left: 200px;
+}
+
+#main #middle input {
+	margin-left: 100px;
+	margin-right: 50px;
+	width: 100px;
+	height: 30px;
+}
+
+#main #footer {
+	margin-top: 50px;
+}
+
+#main #footer iframe {
+	width: 100%;
+	height: 500px;
+}
+
+#all {
+	margin: 0px auto;
+	width: 950px;
+	margin-left: 200px;
+}
+
+#all #head {
+	margin-top: 10px;
+	width: 800px;
+}
+
+#all #middle {
+	text-align: center;
+	width: 800px;
+	margin-top: 30px;
+}
+
+#all #footer {
+	text-align: center;
+	width: 800px;
+	margin-top: 30px;
+}
+
+#all #footer a {
+	margin-left: 20px;
+}
+
+#all .upload {
+	margin-bottom: 30px;
+}
+
+#edit {
+	margin: 0px auto;
+	width: 1000px;
+}
+
+#edit #content {
+	margin-top: 50px;
+}
+
+#edit #content div,input[type="submit"] {
+	margin-top: 30px;
+	margin-left: 50px;
+}
+#up {
+	margin: 0px auto;
+	width: 1000px;
+}
+
+#up #content {
+	margin-top: 50px;
+}
+#up #content div{
+	margin-top: 30px;
+}
+#up #content input[type="button"]{
+	margin-left: 80px;
+	width: 100px;
+}

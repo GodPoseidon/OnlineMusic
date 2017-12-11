@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+ 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--等价于dao接口的实现：namespace为该xml实现的接口 -->
+<mapper namespace="com.iflysse.onlinemusic.dao.CollectDao">
+
+	<resultMap type="Song" id="CollectResultMap">
+		<id property="id" column="id" />
+		<result property="song" column="song" />
+		<result property="songId" column="songId" />
+		<result property="special" column="special" />
+		<result property="singer" column="singer" />
+		<result property="upLoadDate" column="upLoadDate" />
+		<result property="path" column="path" />
+		<result property="userId" column="userId" />
+		<result property="collectId" column="collectId" />
+	</resultMap>
+	<select id="getMyCollectList" resultMap="CollectResultMap">
+		<![CDATA[ 
+			select s.*,c.id collectid,u.nname from Song s left join Collect c on c.songid=s.id left join user u on s.userid=u.id where c.userid=#{userId}  limit #{pageIndex},#{pageSize}
+        ]]>
+	</select>
+	
+	<select id="getTotalCount" parameterType="int" resultType="int">
+		<![CDATA[ 
+			select count(*) from Song s left join Collect c on c.songid=s.id left join user u on s.userid=u.id where c.userid=#{userId}
+        ]]>
+	</select>
+	
+	<insert id="add" parameterType="Collect">
+		<![CDATA[ 
+			insert into collect(userid,songid)values(#{userId},#{songId})
+        ]]>
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		<![CDATA[ 
+				delete from collect where id=#{id}
+        ]]>
+	</delete>
+	
+	<delete id="deleteBySongId" parameterType="int">
+		<![CDATA[ 
+				delete from collect where songid=#{songId}
+        ]]>
+	</delete>
+	
+	<select id="getCollectCount" resultType="int">
+		<![CDATA[ 
+			select count(*) from collect where songid=#{songId} and userid=#{userId}
+        ]]>
+	</select>
+</mapper>
